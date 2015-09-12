@@ -18,7 +18,13 @@ class indexController extends Printemps{
 	 */
 	public function index(){
 		global $param;
-		echo 'If you can see this sentence, that means your Printemps Application works successfully!';
+		/**
+		 * 如果需要加载视图，可以用 parent::loadView() 函数，带上视图参数名称
+		 * 例如要加载 /View/index/index.php，因为 indexController 是当前类，所以可以不带第二个参数：loadView('index.php');
+		 * 如果要加载 helloController 类下的 index.php，需要将此文件放在/View/hello/index.php，然后使用以下方法调用：
+		 * loadView('index.php','helloController')
+		 */
+		parent::loadView('index.php');
 	}
 	/**
 	 * 其他的函数方法命名可以随意，例如命名为 gay，域名为 localhost
