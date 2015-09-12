@@ -105,13 +105,7 @@ class Printemps{
 		else{
 			$agreement = 'http://';
 		}
-		//然后拿到端口，如果为80/443则不显示
-		if($_SERVER["SERVER_PORT"] == '80' || $_SERVER["SERVER_PORT"] == '443'){
-			$port = '';
-		}
-		else{
-			$port = ':'.$_SERVER["SERVER_PORT"];
-		}
+
 		empty($_SERVER['PHP_SELF']) ? $script = $_SERVER['SCRIPT_NAME'] : $script = $_SERVER['PHP_SELF'];
 		//检测QUERT_STRING
 		if(!empty($_SERVER['QUERY_STRING'])){
@@ -121,7 +115,7 @@ class Printemps{
 			$param = '';
 		}
 		//组成获取当前完整的URL地址
-		$url = $agreement.$host.$port.$script.$param;
+		$url = $agreement.$host.$script.$param;
 		//获取当前程序目录
 		$path = preg_match("/(http.*?:\/\/.*?)(\/index\.php.*?)$/", $url, $res);
 		if($return == 1)
