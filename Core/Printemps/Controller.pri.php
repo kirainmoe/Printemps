@@ -112,9 +112,16 @@ class Printemps{
 		else{
 			$port = ':'.$_SERVER["SERVER_PORT"];
 		}
-		$uri = $_SERVER['REQUEST_URI'];
+		empty($_SERVER['PHP_SELF']) ? $script = $_SERVER['SCRIPT_NAME'] : $script = $_SERVER['PHP_SELF'];
+		//检测QUERT_STRING
+		if(!empty($_SERVER['QUERY_STRING'])){
+			$param = '?'.$_SERVER['QUERY_STRING'];
+		}
+		else{
+			$param = '';
+		}
 		//组成获取当前完整的URL地址
-		$url = $agreement.$host.$port.$uri;
+		$url = $agreement.$host.$port.$script.$param;
 		//获取当前程序目录
 		$path = preg_match("/(http.*?:\/\/.*?)(\/index\.php.*?)$/", $url, $res);
 		if($return == 1)
