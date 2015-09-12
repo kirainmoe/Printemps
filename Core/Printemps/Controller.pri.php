@@ -72,6 +72,22 @@ class Printemps{
 	}
 
 	/**
+	 * 解析 PATH_INFO（如果处于PATH_INFO模式）
+	 */
+	public static function parsePathInfo(){
+		if(!isset( $_SERVER['PATH_INFO'] ) ){
+			$pathinfo = '';
+		}else{
+			/**
+			 * 开发笔记：explode() 函数把字符串打散为数组。
+			 * 用法：explode(separator,string,limit);  //separator，规定何处分割；string，规定分割对象；limit，次数限制
+			 */
+			$pathinfo =  explode('/', $_SERVER['PATH_INFO']);
+		}
+		return $pathinfo;
+	}
+
+	/**
 	 * 解析URL并返回相关内容
 	 * @param  integer $return 指定返回的内容
 	 * @return string          返回解析后的结果
@@ -96,16 +112,9 @@ class Printemps{
 		else{
 			$port = ':'.$_SERVER["SERVER_PORT"];
 		}
-		$script = $_SERVER['PHP_SELF'];
-		//检测QUERT_STRING
-		if(!empty($_SERVER['QUERY_STRING'])){
-			$param = '?'.$_SERVER['QUERY_STRING'];
-		}
-		else{
-			$param = '';
-		}
+		$uri = $_SERVER['REQUEST_URI'];
 		//组成获取当前完整的URL地址
-		$url = $agreement.$host.$port.$script.$param;
+		$url = $agreement.$host.$port.$uri;
 		//获取当前程序目录
 		$path = preg_match("/(http.*?:\/\/.*?)(\/index\.php.*?)$/", $url, $res);
 		if($return == 1)
