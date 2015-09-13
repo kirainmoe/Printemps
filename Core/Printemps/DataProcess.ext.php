@@ -38,4 +38,13 @@ class DataProcess{
 		else
 			return false;
 	}
+	/**
+	 * markdown 将markdown解析还原为HTML
+	 * @param  string $string 要转换的字符串
+	 * @return string         转换后的字符串
+	 */
+	public function markdown($string){
+		$content = Markdown::convert($string);
+		return $content;
+	}
 }

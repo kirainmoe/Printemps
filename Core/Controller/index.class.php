@@ -25,6 +25,7 @@ class indexController extends Printemps{
 		 * loadView('index.php','helloController')
 		 */
 		parent::loadView('index.php');
+		$this->QuarterRound(0,2,4,8);
 	}
 	/**
 	 * 其他的函数方法命名可以随意，例如命名为 gay，域名为 localhost
