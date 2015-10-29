@@ -66,7 +66,7 @@ class Printemps{
 			file_exists($viewPath.$classPath.$viewName) ? include $viewPath.$classPath.$viewName : Printemps_Error(500,"加载的视图 ".$viewPath.$classPath.$viewName." 不存在哦 : )！",__FILE__,__LINE__);
 		}
 		else{
-			$classPath = str_replace("Controller.temp", "/", $className.'.temp');
+			$classPath = $className.'/';
 			file_exists($viewPath.$classPath.$viewName) ? include $viewPath.$classPath.$viewName : Printemps_Error(500,"加载的视图 ".$viewPath.$classPath.$viewName." 不存在哦 : )！",__FILE__,__LINE__);
 		}
 	}
@@ -144,5 +144,18 @@ class Printemps{
 	public static function forceHttps(){
 		if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on')
 			header("Location:".str_replace("http://","https://",self::parseURL(0)));
+	}
+	/**
+	 * 动作/网址重定向函数
+	 * @param  string $action 重定向动作
+	 * @return none         
+	 */
+	public static function redirect($action){
+		if(preg_match("/^(http:\/\/|https:\/\/).*?/", $action))
+			header("Location:{$action}");
+		else{
+			$href = self::locationLink($action);
+			header("Location:{$href}");
+		}
 	}
 }

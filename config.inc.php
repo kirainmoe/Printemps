@@ -41,7 +41,7 @@ $config = array(
 	"dbUser" => "root",				//数据库用户名，默认是 root
 	"dbPwd" => "",				//数据库密码，一般是 root 或者为空
 	"dbPort" => 3306,				//数据库端口，一般是3306
-	"dbName" => "printemps",			//数据库名称
+	"dbName" => "moeframework",		//数据库名称
 	"dbEncode" => "utf8",				//数据库整理，默认为 utf8
 	"method" => "pdo",				//数据库查询方式，默认为 pdo ，次推荐为 mysqli 某些情况下主机不支持MySQLi拓展，请使用 mysql
 	);

@@ -25,7 +25,7 @@ class Printemps_Router{
 			/** PATH_INFO 模式 */
 			case 2:
 			case 3:
-			$request = $_SERVER['PATH_INFO'];
+			isset($_SERVER['PATH_INFO']) ? $request = $_SERVER['PATH_INFO'] : $request = '';
 			break;
 		}
 		$requestArray = explode("/",$request);

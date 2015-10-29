@@ -25,6 +25,7 @@ class indexController extends Printemps{
 		 * loadView('index.php','helloController')
 		 */
 		parent::loadView('index.php');
+		echo Printemps_Fliter::fliteScirpt("<script>alert('XSS');</script>");
 	}
 	/**
 	 * 其他的函数方法命名可以随意，例如命名为 gay，域名为 localhost
@@ -35,3 +36,4 @@ class indexController extends Printemps{
 		echo 'Hello Gay!';
 	}
 }
+//根据Unix编码规范，文件的最后要留一个空行，且若不是HTML/PHP混合，不要写php结束标签
