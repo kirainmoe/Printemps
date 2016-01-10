@@ -42,12 +42,12 @@ class Printemps{
 		set_error_handler("Printemps_Notice",E_WARNING ^ E_NOTICE);
 
 		/** 是否开始SESSION会话 */
-		$startSession = isset($initialize['session']) ? $initialize['session'] ? true:false:false;
+		$startSession = isset($initialize['session']) ? $initialize['session'] ? true : false : false;
 		if($startSession)
 			session_start();
 
 		/** 是否立刻开始路由分发 */
-		$startRouter = isset($initialize['router']) ? $initialize['router'] ? true:false:true;
+		$startRouter = isset($initialize['router']) ? $initialize['router'] ? true : false : true;
 		if($startRouter)
 			Printemps_Router::Dispatch();
 	}
