@@ -96,32 +96,16 @@ class Printemps{
 		//先拿到主机/域名地址
 		$host = $_SERVER['HTTP_HOST'];
 		//检测HTTPS是否打开
-		if(isset($_SERVER['HTTPS'])){
-			if($_SERVER['HTTPS'] == "on")
-				$agreement = 'https://';
-			else
-				$agreement = 'http://';
-		}
-		else{
-			$agreement = 'http://';
-		}
-
-		empty($_SERVER['PHP_SELF']) ? $script = $_SERVER['SCRIPT_NAME'] : $script = $_SERVER['PHP_SELF'];
+		$agreement = isset($_SERVER['HTTPS']) ? $_SERVER['HTTPS'] == "on" ? 'https://' : 'http://' : 'http://';
+		$script = empty($_SERVER['PHP_SELF']) ? $_SERVER['SCRIPT_NAME'] : $_SERVER['PHP_SELF'];
 		//检测QUERT_STRING
-		if(!empty($_SERVER['QUERY_STRING'])){
-			$param = '?'.$_SERVER['QUERY_STRING'];
-		}
-		else{
-			$param = '';
-		}
+		$param = !empty($_SERVER['QUERY_STRING']) ? '?'.$_SERVER['QUERY_STRING'] : '';
 		//组成获取当前完整的URL地址
 		$url = $agreement.$host.$script.$param;
 		//获取当前程序目录
 		$path = preg_match("/(http.*?:\/\/.*?)(\/index\.php.*?)$/", $url, $res);
-		if($return == 1)
-			return $res[1].'/';
-		else
-			return $url;
+		
+		return $return == 1 ? $res[1].'/' : $url;
 	}
 	/**
 	 * 生成静态跳转链接
