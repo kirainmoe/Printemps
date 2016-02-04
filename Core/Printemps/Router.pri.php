@@ -45,7 +45,7 @@ class Printemps_Router{
 		global $param;
 		$param = array();
 		if(isset($requestArray[3])){
-			$pt = 2;
+			$pt = 3;
 			while(isset($requestArray[$pt])){
 				isset($requestArray[$pt+1])? $paramValue = $requestArray[$pt+1] : array_push($param,$requestArray[$pt]);
 				if(isset($paramValue))
