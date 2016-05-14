@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>Welcome to Printemps</title>
+	<style>
+		html, body{
+			margin: 0px;
+			display: flex;
+			flex-wrap: wrap;
+			width: 100%;
+			height: 100%;
+			font-family: "Microsoft Yahei", "Consolas";
+			font-style: italic;
+		}
+		.printemps{
+			font-size: 100px;
+			width: 100%;
+			margin: auto;
+			text-align: center;
+			font-weight: normal;
+		}
+		.printemps > small{
+			font-size: 20px;
+			font-weight: normal;
+		}
+		.printemps-action{
+			text-align: center;
+			width: 100%;
+		}
+		.copyright{
+			width: 100%;
+		}
+	</style>
+	<?php Printemps_Response::import(array('style.css','233.js','react.jsx'));?>
+</head>
